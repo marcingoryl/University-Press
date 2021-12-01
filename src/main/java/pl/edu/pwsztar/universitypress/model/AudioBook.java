@@ -1,0 +1,56 @@
+package pl.edu.pwsztar.universitypress.model;
+
+import javax.persistence.ManyToMany;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+
+import static javax.persistence.FetchType.EAGER;
+
+public class AudioBook extends Book{
+
+    private String duration;
+
+    @ManyToMany(fetch = EAGER)
+    private List<Author> authors = new ArrayList<>();
+
+    @ManyToMany
+    private Set<Category> categories = new LinkedHashSet<>();
+
+    public AudioBook() {}
+
+    public AudioBook(String isbn, String title, String description, LocalDate publishingDate, String duration) {
+        super(isbn, title, description, publishingDate);
+        this.duration = duration;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+    @Override
+    public List<Author> getAuthors() {
+        return authors;
+    }
+
+    @Override
+    public void setAuthors(List<Author> authors) {
+        this.authors = authors;
+    }
+
+    @Override
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    @Override
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
+    }
+}

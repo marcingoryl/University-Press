@@ -12,6 +12,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedAttributeNode;
 import javax.persistence.NamedEntityGraph;
 
+
 @Entity
 @NamedEntityGraph(name = "Book.authors",
         attributeNodes = @NamedAttributeNode("authors")
@@ -68,4 +69,6 @@ public class PaperBook extends Book {
     public void setCategories(Set<Category> categories) {
 
     }
+
+
 }
